@@ -1,0 +1,218 @@
+# =============================================================================
+# Code Check — Bezalel Skills Codex
+#
+# Jobs independentes:
+#   audit    → Auditoria das dependências de desenvolvimento
+#   gitleaks → Detecção de secrets pelo mesmo action do template Avodah
+#   lint     → JavaScript, Markdown, contratos das skills e commits do PR
+#   test     → Testes dos controles com dados sintéticos
+#   privacy  → Política de arquivos e padrões de privacidade
+#
+# O resumo é também o gate Repository Check: falha, cancelamento ou job pulado
+# impede aprovação. Build e cobertura percentual não se aplicam a este catálogo.
+# =============================================================================
+
+name: Code Check
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  HUSKY: '0'
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # JOB 1: Auditoria de dependências
+  # ---------------------------------------------------------------------------
+  audit:
+    name: Auditoria de Dependências
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.13.0'
+          cache: npm
+
+      - name: Instalar ferramentas sem lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Auditoria de dependências (severidade alta ou crítica)
+        run: npm run audit:deps
+
+  # ---------------------------------------------------------------------------
+  # JOB 2: Detecção de Secrets (mesmo action do template Avodah)
+  # ---------------------------------------------------------------------------
+  gitleaks:
+    name: Detecção de Secrets (Gitleaks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout do histórico completo
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Detecção de Secrets (Gitleaks)
+        uses: gacts/gitleaks@v1
+        with:
+          fail-on-error: true
+          path: "."
+          config-path: .gitleaks.toml
+
+  # ---------------------------------------------------------------------------
+  # JOB 3: Lint e contratos das skills (substituem o build de uma aplicação)
+  # ---------------------------------------------------------------------------
+  lint:
+    name: Lint e Contratos das Skills
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.13.0'
+          cache: npm
+
+      - name: Instalar ferramentas sem lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: ESLint, Markdown, metadados, catálogo e links locais
+        run: npm run lint
+
+      - name: Sintaxe e catálogo do instalador
+        run: |
+          node --check install.mjs
+          node install.mjs --list
+
+      - name: Check pull request Conventional Commits
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: npm run lint:commits -- --from "$BASE_SHA" --to "$HEAD_SHA"
+
+  # ---------------------------------------------------------------------------
+  # JOB 4: Testes dos controles locais
+  # ---------------------------------------------------------------------------
+  test:
+    name: Testes dos Controles
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.13.0'
+          cache: npm
+
+      - name: Instalar ferramentas sem lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Executar testes com dados sintéticos
+        run: npm test
+
+  # ---------------------------------------------------------------------------
+  # JOB 5: Arquivos privados e padrões de privacidade, inclusive no histórico
+  # ---------------------------------------------------------------------------
+  privacy:
+    name: Arquivos e Privacidade
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout do histórico completo
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.13.0'
+          cache: npm
+
+      - name: Instalar ferramentas sem lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Verificar arquivos atuais e padrões de privacidade
+        run: npm run lint:security
+
+      - name: Verificar arquivos e mensagens do histórico
+        run: npm run lint:history
+
+  # ---------------------------------------------------------------------------
+  # JOB 6: Resumo e gate obrigatório — todo job precisa concluir com sucesso
+  # ---------------------------------------------------------------------------
+  summary:
+    name: Repository Check
+    if: always()
+    needs: [audit, gitleaks, lint, test, privacy]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Gerar resumo e conferir resultado consolidado
+        shell: bash
+        env:
+          AUDIT_RESULT: ${{ needs.audit.result }}
+          GITLEAKS_RESULT: ${{ needs.gitleaks.result }}
+          LINT_RESULT: ${{ needs.lint.result }}
+          TEST_RESULT: ${{ needs.test.result }}
+          PRIVACY_RESULT: ${{ needs.privacy.result }}
+        run: |
+          set -euo pipefail
+          names=('Auditoria de dependências' 'Secrets (Gitleaks)' 'Lint e contratos das skills' 'Testes dos controles' 'Arquivos e privacidade')
+          results=("$AUDIT_RESULT" "$GITLEAKS_RESULT" "$LINT_RESULT" "$TEST_RESULT" "$PRIVACY_RESULT")
+          failed=0
+          {
+            echo '## Code Check — Bezalel Skills Codex'
+            echo ''
+            echo '| Verificação | Resultado |'
+            echo '| --- | --- |'
+            for i in "${!names[@]}"; do
+              case "${results[$i]}" in
+                success) status='✅ Aprovado' ;;
+                failure) status='❌ Falhou'; failed=1 ;;
+                cancelled) status='⚠️ Cancelado'; failed=1 ;;
+                skipped) status='⛔ Não executado'; failed=1 ;;
+                *) status='⛔ Resultado inválido'; failed=1 ;;
+              esac
+              printf '| %s | %s |\n' "${names[$i]}" "$status"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+          if (( failed )); then
+            echo 'Repository Check bloqueado: todas as verificações precisam passar.'
+            exit 1
+          fi

@@ -1,0 +1,65 @@
+{
+  "name": "bezalel-skills-codex",
+  "version": "0.1.0",
+  "description": "Bezalel IMEP - Skills Codex | Planejamento, Criação e Revisão de Comunicação",
+  "author": "Ministério Bezalel",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.13.0"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "skills:list": "node install.mjs --list",
+    "lint": "npm run lint:js && npm run lint:md && npm run lint:skills",
+    "lint:js": "eslint . --max-warnings 0",
+    "lint:md": "markdownlint-cli2 --config package.json --configPointer /markdownlint-cli2",
+    "lint:skills": "node scripts/check-skills.mjs",
+    "lint:security": "node scripts/check-security.mjs",
+    "lint:staged": "node scripts/check-security.mjs --staged",
+    "lint:history": "node scripts/check-security.mjs --history",
+    "lint:commits": "commitlint --quiet",
+    "test": "node --test",
+    "check": "npm run lint:security && npm run lint && npm test",
+    "reset-project": "npm ci --ignore-scripts && npm run prepare && npm run check && npm run audit:deps",
+    "audit:deps": "npm audit --audit-level=high"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.4",
+    "@commitlint/config-conventional": "21.2.4",
+    "@eslint/js": "10.0.1",
+    "@secretlint/secretlint-rule-preset-recommend": "13.1.0",
+    "eslint": "10.14.0",
+    "eslint-plugin-security": "4.2.1",
+    "globals": "17.14.0",
+    "husky": "9.1.7",
+    "markdownlint-cli2": "0.24.0",
+    "secretlint": "13.1.0",
+    "yaml": "2.9.1"
+  },
+  "markdownlint-cli2": {
+    "globs": ["**/*.md"],
+    "ignores": ["node_modules/**", ".husky/_/**"],
+    "config": {
+      "default": true,
+      "MD013": false,
+      "MD024": { "siblings_only": true },
+      "MD033": false,
+      "MD060": false
+    },
+    "overrides": [{
+      "filter": ["skills/**/SKILL.md"],
+      "combine": "merge",
+      "config": {
+        "MD012": false,
+        "MD022": false,
+        "MD032": false
+      }
+    }]
+  },
+  "overrides": {
+    "katex": "0.18.2",
+    "minimatch": "11.0.4",
+    "re2js": "2.8.7"
+  }
+}

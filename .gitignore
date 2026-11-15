@@ -1,0 +1,71 @@
+# .gitignore — Skills Codex e ferramentas Node.js
+
+# Dependências e hooks gerados
+node_modules/
+.husky/_/
+
+# Testes, relatórios e cache de ferramentas
+coverage/
+reports/
+.cache/
+.eslintcache
+.prettiercache
+
+# Logs e arquivos temporários
+.tmp/
+tmp/
+temp/
+*.log
+npm-debug.log*
+*.tmp
+*.bak
+*.orig
+
+# Segredos e configurações privadas
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+token*.json
+.codex/
+.agents/
+
+# Materiais e produções pertencem à pasta de trabalho privada
+[Aa]ssets/
+[Pp]roduções/
+[Pp]roducoes/
+[Pp]rivate/
+[Pp]rivado/
+*.raw
+*.dng
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.psd
+*.psb
+*.pcraft
+*.vectorcraft
+*.aep
+*.fcproj
+*.ecproj
+*.cdr
+*.lcpreset
+*.zip
+
+# Estado pessoal do editor e sistema operacional
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

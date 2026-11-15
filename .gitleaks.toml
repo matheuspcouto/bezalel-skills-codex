@@ -1,0 +1,6 @@
+title = "Bezalel Skills Codex — regras padrão de secrets"
+
+# Herdar as regras padrão da versão executada pela Action.
+# Não excluir documentação, testes ou exemplos em bloco.
+[extend]
+useDefault = true

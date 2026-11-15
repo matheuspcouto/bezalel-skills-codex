@@ -1,0 +1,1 @@
+node scripts/check-security.mjs --message "$1" && npx --no -- commitlint --quiet --edit "$1"
