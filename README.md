@@ -120,7 +120,7 @@ O catálogo contém **28 skills**, organizadas por finalidade. Cada arquivo é i
 | [bezalel-planejamento-criativo](skills/bezalel-planejamento-criativo/SKILL.md) | Organiza brief, conceito, etapas, prioridades e critérios de aceite. |
 | [bezalel-planejamento-editorial](skills/bezalel-planejamento-editorial/SKILL.md) | Planeja canais, formatos, pauta, prazos e avaliação, com demandas vinculáveis ao Google Agenda. |
 | [bezalel-legendas](skills/bezalel-legendas/SKILL.md) | Produz copy, transcrição local e legendas editáveis/SRT/VTT; orienta remapeamento após cortes e revisão textual/bíblica. |
-| [bezalel-analise-live](skills/bezalel-analise-live/SKILL.md) | Analisa lives de culto sob demanda e entrega no chat anotações, título, frase marcante e sugestões de corte e áudio com minutagem. |
+| [bezalel-analise-live](skills/bezalel-analise-live/SKILL.md) | Analisa lives de culto sob demanda e entrega no chat anotações, título, frase marcante, marcadores do culto e sugestões de corte e áudio. |
 | [bezalel-estrategia-social](skills/bezalel-estrategia-social/SKILL.md) | Adequa títulos, palavras-chave, hashtags e CTA a Instagram, TikTok e YouTube; analisa desempenho sob demanda. |
 | [bezalel-revisao-tecnica](skills/bezalel-revisao-tecnica/SKILL.md) | Confere conteúdo, formato, evidências e editabilidade; devolve achados e limitações sem alterar a produção por iniciativa própria. |
 
