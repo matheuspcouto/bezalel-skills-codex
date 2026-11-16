@@ -2,7 +2,7 @@
 
 > **Skills para o Ministério Bezalel** — planejamento, criação e revisão da comunicação da Igreja Metodista em Palmas.
 
-O **bezalel-skills-codex** reúne **27 skills** para apoiar os departamentos de **videomaking, design, fotografia, stories e social media**. Cada skill organiza entradas, procedimentos, entregas e critérios de revisão para tornar o trabalho da equipe mais consistente e preservar os arquivos editáveis.
+O **bezalel-skills-codex** reúne **28 skills** para apoiar os departamentos de **videomaking, design, fotografia, stories e social media**. Cada skill organiza entradas, procedimentos, entregas e critérios de revisão para tornar o trabalho da equipe mais consistente e preservar os arquivos editáveis.
 
 Desenvolvido inicialmente para a liderança do Bezalel, o pacote permite que os integrantes utilizem os mesmos procedimentos no Codex em seus computadores e reaproveitem as orientações como referências no ChatGPT pelo celular. O **manual vigente e os logos oficiais** orientam as decisões de identidade visual.
 
@@ -111,15 +111,16 @@ As skills e o instalador não baixam aplicativos, instalam plugins ou conectam c
 
 ## 🧩 Skills disponíveis
 
-O catálogo contém **27 skills**, organizadas por finalidade. Cada arquivo é independente; os procedimentos e as dependências completas estão nos links abaixo.
+O catálogo contém **28 skills**, organizadas por finalidade. Cada arquivo é independente; os procedimentos e as dependências completas estão nos links abaixo.
 
-### 🧭 Planejamento, texto e revisão — 5 skills
+### 🧭 Planejamento, texto e revisão — 6 skills
 
 | Skill | O que faz |
 | --- | --- |
 | [bezalel-planejamento-criativo](skills/bezalel-planejamento-criativo/SKILL.md) | Organiza brief, conceito, etapas, prioridades e critérios de aceite. |
 | [bezalel-planejamento-editorial](skills/bezalel-planejamento-editorial/SKILL.md) | Planeja canais, formatos, pauta, prazos e avaliação, com demandas vinculáveis ao Google Agenda. |
 | [bezalel-legendas](skills/bezalel-legendas/SKILL.md) | Produz copy, transcrição local e legendas editáveis/SRT/VTT; orienta remapeamento após cortes e revisão textual/bíblica. |
+| [bezalel-analise-live](skills/bezalel-analise-live/SKILL.md) | Analisa lives de culto sob demanda e entrega no chat anotações, título, frase marcante e sugestões de corte e áudio com minutagem. |
 | [bezalel-estrategia-social](skills/bezalel-estrategia-social/SKILL.md) | Adequa títulos, palavras-chave, hashtags e CTA a Instagram, TikTok e YouTube; analisa desempenho sob demanda. |
 | [bezalel-revisao-tecnica](skills/bezalel-revisao-tecnica/SKILL.md) | Confere conteúdo, formato, evidências e editabilidade; devolve achados e limitações sem alterar a produção por iniciativa própria. |
 
@@ -189,7 +190,7 @@ O catálogo contém **27 skills**, organizadas por finalidade. Cada arquivo é i
 ├── 📄 package.json               → Ferramentas de desenvolvimento; pacote privado no npm
 ├── 📄 package-lock.json          → Resolução e integridade das dependências
 ├── 📄 install.mjs                → Instalador local opcional, sem dependências npm
-└── 📁 skills/                    → 27 pastas independentes
+└── 📁 skills/                    → 28 pastas independentes
     ├── 📁 bezalel-design-grafico/
     │   └── 📄 SKILL.md           → Metadados, procedimento e critérios de entrega
     ├── 📁 bezalel-edicao-video/
@@ -251,7 +252,7 @@ No Windows, `~` representa sua pasta de usuário, como `C:/Users/SEU_USUARIO`. A
 
 ### 📁 2. Opção manual
 
-Copie a pasta de cada skill desejada para o destino escolhido. Para instalar todas, copie as **27 subpastas** de `skills/`, sem criar uma segunda pasta `skills` dentro do destino.
+Copie a pasta de cada skill desejada para o destino escolhido. Para instalar todas, copie as **28 subpastas** de `skills/`, sem criar uma segunda pasta `skills` dentro do destino.
 
 Também é possível copiar o texto: crie a pasta correspondente e salve o arquivo como **`SKILL.md`**, mantendo o cabeçalho com `name` e `description`. Confira se a extensão não ficou `SKILL.md.txt`.
 
@@ -288,7 +289,7 @@ Execute na pasta deste pacote. Os comandos de instalação copiam arquivos para 
 
 | Comando | Finalidade |
 | --- | --- |
-| `node install.mjs --list` | Listar as 27 skills sem instalar. |
+| `node install.mjs --list` | Listar as 28 skills sem instalar. |
 | `node install.mjs --help` | Consultar opções e comportamento do destino. |
 | `node install.mjs --skill bezalel-design-grafico` | Instalar uma skill. |
 | `node install.mjs --skill bezalel-edicao-video --skill bezalel-legendas` | Selecionar várias skills repetindo `--skill`. |
@@ -702,7 +703,7 @@ As referências orientam a execução; a capacidade real depende das ferramentas
 
 | Fonte | Conteúdo |
 | --- | --- |
-| [Catálogo de skills](#skills) | Links para os 27 procedimentos, suas entradas, dependências e critérios de entrega. |
+| [Catálogo de skills](#skills) | Links para os 28 procedimentos, suas entradas, dependências e critérios de entrega. |
 | [install.mjs](install.mjs) | Opções, destinos, cópia local e preservação de conflitos. |
 | [Como contribuir](#contribuicao) | Ferramentas locais, commits, hooks e justificativa dos validadores/testes. |
 | [Segurança e privacidade](#seguranca) | Arquivos permitidos, prevenção, limites e resposta a achados. |
