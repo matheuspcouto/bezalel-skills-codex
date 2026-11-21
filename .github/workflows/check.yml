@@ -3,7 +3,7 @@
 #
 # Jobs independentes:
 #   audit    → Auditoria das dependências de desenvolvimento
-#   gitleaks → Detecção de secrets pelo mesmo action do template Avodah
+#   gitleaks → Detecção de segredos com Gitleaks
 #   lint     → JavaScript, Markdown, contratos das skills e commits do PR
 #   test     → Testes dos controles com dados sintéticos
 #   privacy  → Política de arquivos e padrões de privacidade
@@ -57,7 +57,7 @@ jobs:
         run: npm run audit:deps
 
   # ---------------------------------------------------------------------------
-  # JOB 2: Detecção de Secrets (mesmo action do template Avodah)
+  # JOB 2: Detecção de Secrets (Gitleaks)
   # ---------------------------------------------------------------------------
   gitleaks:
     name: Detecção de Secrets (Gitleaks)

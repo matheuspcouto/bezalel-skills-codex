@@ -15,7 +15,7 @@ export default [
       'no-eval': 'error',
       'no-new-func': 'error',
       'no-implied-eval': 'error',
-      // Regras do template Avodah aplicáveis aos scripts JavaScript deste pacote.
+      // Regras de segurança aplicáveis aos scripts JavaScript deste pacote.
       'security/detect-eval-with-expression': 'error',
       'security/detect-non-literal-regexp': 'error',
       'security/detect-possible-timing-attacks': 'error'

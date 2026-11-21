@@ -32,6 +32,15 @@ npm-debug.log*
 *.pfx
 credentials*.json
 token*.json
+secrets*.json
+*.local
+*.local.*
+*.private
+*.private.*
+.local/
+.private/
+.mcp.json
+mcp.json
 .codex/
 .agents/
 
