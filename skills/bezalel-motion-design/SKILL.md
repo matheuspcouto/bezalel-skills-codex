@@ -7,6 +7,17 @@ description: "Projetar animação Bezalel com storyboard, timing e keyframes edi
 
 EffectCraft instalado primeiro; HyperFrames como prévia de conceito; After Effects apenas quando solicitado/justificado.
 
+## Biblioteca PodIMEP: títulos e pontuação da fala
+
+Para cortes neste padrão, combinar [receitas](../../docs/cortes/receitas-de-animacao.md), [parâmetros](../../docs/cortes/parametros.md) e [fontes editáveis](../../docs/cortes/fontes-editaveis.md). O clone contém uma galeria offline materializável; o código de referência é Remotion, não um nativo de EffectCraft/After Effects/CapCut.
+
+- Organizar três papéis: legenda funcional, apoio menor em caixa normal e palavra principal itálica dominante. Usar a mesma âncora central; linhas próximas sem colisão. Cor, peso e corpo criam hierarquia antes de movimento extra.
+- Arranjos disponíveis: gancho sobre imagem; pergunta escura sem traço; pilha dramática em três linhas; cruz como forma editável atrás do título; pergunta clara com passagem lateral; resposta escura contígua. Os símbolos dependem da mensagem, não são decoração obrigatória de todo corte.
+- Revelar palavras/linhas no tempo da fala. Ponto de partida a 24 fps: opacidade em 3 frames e deslocamento de 13 px em 5; passagem lateral de 38 px em 9. Converter pela duração em segundos quando mudar fps; não animar por relógios independentes da timeline.
+- Para o destaque dramático por corte seco, entrar com P&B e zoom já no primeiro frame, retornar depois da frase, sem fade de cor ou recuo animado. Para a cartela da cruz, a entrada/saída suave de 7 frames é uma escolha diferente e localizada.
+- Manter fundos sólidos e sombra difusa leve nos títulos; a pergunta do véu não tem traço. Entre sólidos ligados, cobertura opaca contínua; nenhuma lacuna mostrando o apresentador.
+- SFX pontua o lettering principal, com ataque sincronizado e cauda preservada. Legendas normais continuam sem SFX por palavra. Conferir movimento em prévia e, somente se export solicitado, no arquivo resultante.
+
 ## Procedimento
 
 1. Confirmar duração, aspecto, fps, mensagens, áudio, fontes, acessibilidade e aplicativo editável final. Identificar o que precisa permanecer texto, objeto ou keyframe.
@@ -16,6 +27,25 @@ EffectCraft instalado primeiro; HyperFrames como prévia de conceito; After Effe
 5. Preservar duração, âncoras, texto, dependências e keyframes. Não aplicar bounce/transição universal nem efeitos que prejudiquem leitura; evitar flashes desconfortáveis.
 6. Salvar/reabrir projeto, editar texto ou keyframe, renderizar e conferir frames, clipping, fontes, movimento e som. Registrar explicitamente se a prova foi CLI ou GUI.
 7. Se uma ponte for solicitada, mapear o que ficou editável, foi rasterizado ou se perdeu. Nenhum MP4/HTML renomeado vira ECPROJ/AEP.
+
+<a id="referencias-de-motion-para-cortes"></a>
+
+## Referências de motion para cortes
+
+Adapte estas composições à fala, ao enquadramento e à identidade aprovada. Para aplicá-las a uma edição existente, mantenha o fluxo e a regra de exportação da [skill de edição de vídeo](../bezalel-edicao-video/SKILL.md). Use intervalos em segundos como pontos de partida e ajuste aos frames da sequência.
+
+| Composição | Quando usar | Caminho de montagem |
+| --- | --- | --- |
+| Ênfase tipográfica discreta | Uma palavra concentra a ideia do trecho. | Ancore o texto em espaço negativo e use a mudança de peso ou cor como primeiro teste. Se precisar de entrada, teste opacidade de 0 a 100% em cerca de 0,18–0,25 s e pequeno deslocamento com desaceleração. Termine o movimento cedo para a leitura acontecer com o texto parado. |
+| Cartela ou tela dividida | Uma pergunta, título ou apoio visual merece espaço por si só. | Preserve a voz e use o corte ou uma dissolução curta para dar passagem à cartela. No split, mantenha o falante visível e dimensione o apoio pelo que precisa ser lido. Em materiais de arquivo, use imagens cuja relação com a fala esteja clara. |
+| Revelação com papel rasgado | Uma abertura ou chamada especial pede colagem. | Anime uma máscara de borda irregular para revelar uma camada. Para dar sensação de stop motion, experimente atualizar o movimento a cada dois frames numa sequência de 24 fps. Mantenha o título nítido e estável após a revelação. |
+
+Para extrair um movimento de uma referência, anote o que muda entre início, chegada e leitura. Numa imagem estática, observe composição, peso visual e contraste. Para timing e curva de velocidade, observe a referência em reprodução ou por sequência de quadros. Na prévia da timeline, confira a animação no ritmo da fala e no tamanho de celular, inclusive o ponto de maior escala e a convivência com a legenda.
+
+Exemplos de observação visual documentados nas referências de edição de Pedro. Use os tempos para localizar o recurso.
+
+- **Texto no espaço da cena.** Em cerca de 00:55, palavras entram em sequência ao redor da pessoa sentada. No corte vertical, experimente esse arranjo quando o fundo oferecer espaço e mantenha a ordem de leitura. [Reel de referência](https://www.instagram.com/reel/DeL0qoEvYmD/).
+- **Cartela como pontuação.** Por volta de 01:24, o plano de ação dá lugar a uma cartela com texto central. Em podcast, teste uma cartela para sinalizar uma pergunta ou mudança de assunto, com grafismo da equipe. [The Importance Of Changing Your Room, de Kealan](https://www.youtube.com/watch?v=caCeQppJOW4&t=84s).
 
 ## Saída verificável
 

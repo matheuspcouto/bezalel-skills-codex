@@ -65,6 +65,20 @@ A prioridade de ferramentas é **ArtCraft, Canva e CapCut**, com **HyperFrames**
 
 ---
 
+### Cortes PodIMEP para o ministério
+
+O [guia de edição de cortes](docs/cortes/guia-podimep.md) reúne as decisões do corte sobre o véu: narrativa, legenda palavra a palavra, títulos centrais com hierarquia, fundos sólidos, câmera/P&B sincronizados e áudio em faixas independentes. Inclui [39 pedidos e decisões](docs/cortes/pedidos-e-decisoes.md), parâmetros medidos, receitas e critérios de revisão. São referências adaptáveis à identidade vigente.
+
+Para abrir um moodboard com seis exemplos animados e obter os fontes editáveis em uma pasta de trabalho fora do repositório:
+
+```sh
+node scripts/cortes/materializar-kit.mjs --dest ../podimep-kit
+```
+
+Abra `../podimep-kit/referencias/index.html`. O comando não baixa mídia, não instala ferramentas e não exporta vídeo. Vídeo, música, SFX, fontes e LUT são dependências externas descritas no guia. O exemplo Remotion não substitui o editor escolhido para a produção.
+
+---
+
 <a id="tecnologias"></a>
 
 ## 🛠️ Tecnologias e formatos

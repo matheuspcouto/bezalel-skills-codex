@@ -5,6 +5,16 @@ description: "Produzir copy de postagem, transcrição e legendas editáveis ou 
 
 # legendas
 
+## Legenda animada no padrão PodIMEP
+
+- Manter a legenda de base palavra a palavra e intercalá-la com os títulos. Durante o título, ocultar a legenda visual redundante; preservar a transcrição completa em arquivo acessível quando solicitado.
+- Marcar o ataque real de cada palavra por áudio. Não antecipar “uma”, “porque”, “mas” ou “quando” para preencher uma pausa. Depois de um destaque, conferir tanto a palavra final do título quanto a primeira da legenda seguinte.
+- Em composição por frames, usar o primeiro frame não anterior ao início da palavra (`ceil(startMs × fps / 1000)`) e opacidade zero antes dele. A versão de referência usa subida curta de 7 px em 3 frames; o movimento acompanha a revelação, não substitui o controle de visibilidade.
+- Se o export for solicitado, conferir no próprio arquivo que a palavra só aparece no momento correto. Nesta edição, uma falha de preservação de `visibility` fez palavras aparecerem juntas; a solução foi controlar opacidade por frame. Isso não garante que todo editor tenha o mesmo problema.
+- Apoios de títulos em caixa normal, menores que o destaque, alinhados ao centro comum da legenda. Frase em uma linha só quando couber sem comprometer leitura. Não generalizar a exceção “quando você entender” para frases longas.
+
+Consultar [receitas](../../docs/cortes/receitas-de-animacao.md), [parâmetros](../../docs/cortes/parametros.md) e [fontes materializáveis](../../docs/cortes/fontes-editaveis.md) no clone. A sincronização do exemplo não serve como timestamp de outra fala.
+
 ## Contrato de entrada
 Tipo de legenda (postagem ou subtítulo), objetivo/público/canal, fatos, CTA e fontes. Para vídeo, áudio autorizado ou transcrição+timecodes; para Bíblia, referência, tradução/edição e fonte.
 
@@ -44,6 +54,15 @@ seguir as regras de materiais e permissões integradas neste arquivo. Não inven
 - Agrupe por unidade de sentido, respeitando mudanças de tomada e evitando terminar um bloco com artigo/preposição isolado quando houver alternativa legível. Ajuste quebras, duração e antecipação de entrada ao áudio e ao fps real; não impor contagem fixa de caracteres ou velocidade de leitura a todos os vídeos.
 - Após gerar/importar no editor, confira idioma explícito, fonte/estilo, acentos, área segura e uma amostra de uma e duas linhas. Compare todo o texto salvo à transcrição corrigida, permitindo diferenças de espaços/quebras; verifique tempos positivos, ordenação, sobreposição intencional e limites da sequência. Essa conferência detecta perdas de texto e intervalos inválidos; sincronismo integral continua dependendo de reprodução com áudio.
 - Na fala que cita a Bíblia, mantenha a distinção entre transcrição do participante e cartela com citação editorial. Consultar uma tradução ajuda a identificar referência/grafia, mas não autoriza substituir silenciosamente a fala nem declarar a tradução confirmada apenas por semelhança textual.
+
+<a id="hierarquia-para-cortes-de-podcast-e-pregacao"></a>
+
+## Hierarquia para cortes de podcast e pregação
+
+- Monte primeiro a trilha de legenda com a fala conferida. Se o título editorial repete o mesmo texto e ambos ocupam a mesma região, integre a ênfase à legenda ou reposicione o título. Preserve as palavras necessárias para entender a frase. Em “Ainda não tínhamos uma resposta”, mantenha “não tínhamos” no mesmo bloco quando houver espaço.
+- Se duas vozes se sobrepõem, escute o intervalo em contexto. Identifique quem fala quando imagem e voz não bastarem, como num reenquadramento sobre a reação do outro participante. Se as duas intervenções forem inteligíveis e necessárias ao sentido, mostre a troca com identificação consistente e entradas sincronizadas. Uma interjeição ou risada pode ficar em segundo plano quando não mudar o sentido. Se uma fala importante estiver indistinta, sinalize o timecode para conferência.
+- Se houver legenda nativa e destaque tipográfico em outra camada, mantenha a mesma redação e amarre ambos ao tempo da sequência. Após mexer no corte, compare a última palavra antes da emenda e a primeira depois. Confira “ã”, “é” e “ç” na fonte efetiva, especialmente se o destaque tiver outra família ou itálico. Em SRT/VTT, preserve a leitura completa também quando o destaque visual estiver ausente.
+- Em uma frase com pausa dramática, confira especialmente as palavras que acionam lettering ou SFX. O reconhecimento automático pode anexar o silêncio à palavra seguinte e marcar sua entrada cedo demais. Compare a marca com a forma de onda e a reprodução do master, preserve a pausa quando ela sustentar a fala e revele o destaque no ataque da palavra. Se o lettering ocupar o lugar da legenda, distribua a frase entre os dois sem perder palavras de ligação.
 
 ## Testes
 Checar encoding, ordem/duração dos cues, ortografia e fonte dos fatos; reproduzir mídia para verificar sincronismo/leitura. Fixture sem áudio só prova sintaxe.
