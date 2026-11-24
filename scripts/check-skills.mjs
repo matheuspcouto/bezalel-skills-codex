@@ -3,6 +3,7 @@ import { dirname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseDocument } from 'yaml';
 import { root } from './repository.mjs';
+import { skillFiles } from './skill-layout.mjs';
 
 export function validateSkill(name, text) {
   const errors = [];
@@ -30,16 +31,30 @@ export function validateCatalog(readme, names) {
 export function checkSkills() {
   const errors = [];
   const directory = join(root, 'skills');
-  const names = readdirSync(directory).sort();
-  for (const name of names) {
+  const entries = readdirSync(directory, { withFileTypes: true });
+  const names = entries.map(entry => entry.name);
+  for (const entry of entries) {
+    const { name } = entry;
     const folder = join(directory, name);
-    if (!/^[a-z0-9-]+$/.test(name) || !existsSync(join(folder, 'SKILL.md'))) {
+    if (!entry.isDirectory() || !/^[a-z0-9-]+$/.test(name)) {
       errors.push('skills/: estrutura-invalida'); continue;
     }
-    if (readdirSync(folder).join(',') !== 'SKILL.md') errors.push(`${name}: arquivo-extra`);
-    const text = readFileSync(join(folder, 'SKILL.md'), 'utf8');
-    errors.push(...validateSkill(name, text).map(error => `${name}: ${error}`));
-    checkLinks(`skills/${name}/SKILL.md`, text, errors);
+    let files;
+    try {
+      files = skillFiles(folder);
+    } catch {
+      errors.push(`${name}: estrutura-invalida`);
+      continue;
+    }
+    if (!files.includes('SKILL.md')) {
+      errors.push(`${name}: skill-ausente`);
+      continue;
+    }
+    for (const file of files) {
+      const text = readFileSync(join(folder, file), 'utf8');
+      if (file === 'SKILL.md') errors.push(...validateSkill(name, text).map(error => `${name}: ${error}`));
+      checkLinks(`skills/${name}/${file}`, text, errors);
+    }
   }
   const readme = readFileSync(join(root, 'README.md'), 'utf8');
   errors.push(...validateCatalog(readme, names));

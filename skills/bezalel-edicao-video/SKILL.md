@@ -5,20 +5,6 @@ description: "Editar e finalizar vídeos do Bezalel a partir de mídia existente
 
 # Edição de vídeo
 
-## Padrão PodIMEP para a equipe
-
-Para cortes de podcast/pregação neste estilo, use o [guia compartilhado](../../docs/cortes/guia-podimep.md), os [parâmetros](../../docs/cortes/parametros.md) e a [revisão mensurável](../../docs/cortes/revisao-e-medidas.md). Os anexos estão no clone do repositório; a skill instalada isoladamente continua utilizável com as regras essenciais abaixo.
-
-- Preserve contexto e ordem da fala. Abra com tensão/pergunta sustentada pelo trecho; título editorial sobre saudação não é transcrição literal. A emoção deve vir da mensagem, com espaço para conclusão e respiração.
-- Intercale legenda palavra a palavra com títulos pontuais. Legenda sem fundo individual; títulos podem ocupar a tela inteira sobre sólido. Na troca entre dois sólidos, mantenha cobertura contínua, sem flash da câmera.
-- Centralize legenda e título na mesma âncora. Apoio branco em caixa normal e menor; palavra principal itálica consideravelmente maior. No exemplo 1080 × 1920: apoio 44–58 px, destaque 164–212 px, coluna de 704 px centrada em x=540. Ajustar pela fonte, conteúdo e área segura real.
-- Use sólidos como padrão desta direção e sombra preta difusa leve, sem borda dura. Não ressuscitar texturas descartadas nem transformar a peça inteira em P&B. O look e a paleta continuam sujeitos ao manual e ao briefing.
-- Na ênfase dramática com corte seco, câmera, zoom e P&B usam o mesmo início e fim em frames, amarrados à frase inteira. Não introduzir fade de cor ou retorno por afastamento nesse arranjo. A cartela da cruz usa transição suave própria e não define a transição de todos os destaques.
-- Voz, música e SFX ficam independentes. Preserve sílabas e caudas dos efeitos; shutter somente em destaques importantes, com escuta comparativa. Trilha deve permitir ajustar entrada, ponto da faixa, duração e ganho.
-- Fontes de LUT ou valores de ganho não comprovam look aplicado, loudness ou sincronismo. Identifique o que foi implementado, medido e ouvido; registre pendências. O histórico deste exemplo inclui um LUT solicitado mas não aplicado.
-
-As [decisões do histórico](../../docs/cortes/pedidos-e-decisoes.md) distinguem pedidos substituídos dos finais. Os [fontes e animações](../../docs/cortes/fontes-editaveis.md) podem ser materializados com `node scripts/cortes/materializar-kit.mjs --dest ../podimep-kit`, no clone. O comando só cria arquivos de referência; não prepara mídia nem autoriza export. Não mudar o editor escolhido por causa do exemplo Remotion.
-
 ## Regra permanente: edição sem exportação automática
 
 Por instrução expressa do usuário em 05/11/2026, **nunca exportar sem pedido explícito de exportação**. O padrão é fazer os ajustes no FilmCraft ou no editor solicitado, salvar o projeto editável e preservar suas dependências; o usuário cuida da exportação manual.
@@ -57,7 +43,9 @@ Para organizar pastas ou comparar cópias do acervo antes da montagem, use `beza
 
 ## Cortes verticais com referência editorial
 
-Aplique o padrão PodIMEP descrito acima quando o usuário pedir edição de um corte curto do Bezalel, incluindo trechos de pregação e podcast para redes sociais. As referências externas a seguir ampliam o repertório de ritmo e hierarquia; não substituem as decisões finais do padrão. Outra direção solicitada pelo usuário prevalece. Em episódios completos, registros integrais de eventos e peças longas, aplique a edição proporcional ao formato e use este estilo nos cortes derivados.
+Aplique o [kit de edição de cortes](references/kit-edicao-de-cortes.md) como método padrão para cortes curtos, incluindo pregação, podcast e outros conteúdos falados. Monte pela ideia, preserve a premissa e a ordem da fala, confira a montagem sem grafismos e só então escolha a ênfase visual. Se o título editorial resumir a ideia, diferencie-o da legenda literal. Em peças longas, aplique o método proporcionalmente e use o kit nos cortes derivados.
+
+Use as referências visuais como repertório de ritmo e hierarquia. Se a peça comportar lettering, use apoio menor e uma palavra dominante, com posição previsível e contraste adequado. Mantenha o fundo contínuo entre cartelas encadeadas. Em um corte seco de ênfase, sincronize as mudanças combinadas de câmera, zoom e tratamento no mesmo intervalo da timeline. A identidade, o formato e a direção do briefing orientam as escolhas.
 
 Para cada corte, escolha a fala que abre a peça, as palavras que merecem destaque e os momentos de mudança visual. Trabalhe com o pregador ou falante em evidência, saturação controlada, legendas cinéticas de alto contraste e palavras-chave maiores ou com tipografia distinta. Use monocromia, desfoque, moldura ou CTA quando tiverem função no trecho e couberem no briefing. Adapte a paleta e a tipografia à identidade do Bezalel.
 
@@ -80,22 +68,6 @@ Use este fluxo ao transformar material existente em um corte vertical com foco e
 5. Proponha as legendas em blocos de sentido de até seis palavras, sem omitir informação necessária para caber no bloco.
 6. Associe a cada trecho os recursos que tenham função na edição, como B-roll, print, zoom ou corte. Na mesma passagem, indique o ritmo e onde trilha, efeitos sonoros ou ênfases ajudam a leitura da ideia.
 7. Entregue o plano em uma tabela com **Tempo | Fala | Texto na tela | Corte/efeito | Visual de apoio**, usando intervalos da timeline final. Identifique os tempos estimados quando a montagem ainda não estiver temporizada. Aponte por trecho o que falta gravar, enviar ou confirmar e para que será usado.
-
-### Da seleção à timeline no PodIMEP
-
-- Mantenha a ordem das falas da fonte nos cortes. Encontre o gancho dentro dessa ordem e preserve o mínimo de contexto para quem chega sem conhecer o episódio. Organize a seleção para a mensagem avançar da pergunta ou tensão inicial à explicação e ao desfecho. Reveja a sequência sem os grafismos para confirmar que as palavras do participante sustentam a ligação entre os trechos e que a emoção vem da fala.
-- Identifique a pergunta, a resposta e a menor passagem anterior que dá sentido a pronomes, citações ou alusões. Se encurtar a pergunta, mantenha a premissa que o convidado efetivamente respondeu. Em cortes de culto vindos da análise de live, confirme os limites sugeridos na mídia antes de editar.
-- Anote o relógio de referência de cada trecho. Se o arquivo local começar depois da transmissão, alinhe os dois por uma fala ou evento reconhecível. Se houver intervalos removidos, confira o alinhamento após cada descontinuidade. A tabela de montagem usa tempos da sequência, com os tempos da fonte preservados para revisão.
-- Segure a câmera em quem conduz a ideia. Uma reação breve pode pontuar uma passagem se pertencer ao mesmo momento da conversa. Em risos ou falas simultâneas, avalie o plano de dois antes de alternar sozinho entre rostos. Deixe a câmera, o gesto e a reação real conduzirem as mudanças de ritmo.
-- Quando a fala pedir um destaque, consulte as [referências de motion para cortes](../bezalel-motion-design/SKILL.md#referencias-de-motion-para-cortes). Para duas vozes, siga a [hierarquia de legendas](../bezalel-legendas/SKILL.md#hierarquia-para-cortes-de-podcast-e-pregacao).
-
-Exemplo sintético de mapa de montagem. Tempos ilustrativos de uma sequência com abertura na pergunta e uma virada na resposta.
-
-| Fonte | Sequência | Fala ilustrativa | Decisão de montagem |
-| --- | --- | --- | --- |
-| 00:12:14–00:12:16 | 00:00–00:02 | Como começou a ideia? | Plano de quem pergunta e legenda estável. |
-| 00:12:16–00:12:21 | 00:02–00:07 | Começou com um encontro pequeno. | Plano de quem responde. Dividir a legenda em blocos de leitura se o áudio pedir. |
-| 00:12:24–00:12:30 | 00:07–00:13 | O que manteve o grupo unido foi a escuta. | Confirmar na fonte se a retirada do intervalo preserva a relação entre as frases. Se houver espaço no quadro, dar ênfase a “escuta” na própria legenda. Manter o enquadramento até a conclusão. |
 
 ## Base de referências de pregação — 05/11/2026
 
@@ -137,6 +109,8 @@ Análise visual por amostragem no player público. Timecodes aproximados; não h
 Referências para consulta no momento da edição. [Tamanho e proporções de Reels](https://help.instagram.com/1038071743007909) · [Áreas seguras em anúncios para Stories e Reels](https://www.facebook.com/business/help/980593475366490)
 
 ## Áudio e música
+
+Mantenha voz, trilha e efeitos em faixas independentes. Ajuste a entrada na timeline, o ponto inicial da faixa, a duração e o ganho da música separadamente. Se um efeito pontuar um destaque, alinhe o ataque à fala ou à ação e escute a cauda e as emendas com a voz.
 
 1. Sincronize as fontes e escolha a voz principal mais limpa. Ajuste ganho por clipe e equilibre os participantes. Corrija ruído, reverberação, plosivas e sibilância com moderação e compare antes/depois. Use equalização corretiva, compressão leve e limitação quando necessárias. Preserve a dinâmica natural e use ambiente ou crossfades para evitar saltos entre cortes.
 2. Use música de fundo discreta quando combinar com a peça. Prefira instrumental, com fades e redução de volume sob a voz. Confira a inteligibilidade em fones e no alto-falante do celular. Se a faixa competir com a fala ou não houver permissão verificável, entregue a versão sem trilha.

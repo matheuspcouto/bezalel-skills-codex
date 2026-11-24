@@ -13,6 +13,7 @@ A prioridade de ferramentas é **ArtCraft, Canva e CapCut**, com **HyperFrames**
 ## 📑 Sumário
 
 - [✨ Principais recursos](#recursos)
+- [Kit de edição de cortes](#kit-edicao-de-cortes)
 - [🛠️ Tecnologias e formatos](#tecnologias)
 - [🧰 Ferramentas e integrações](#ferramentas)
 - [🧩 Skills disponíveis](#skills)
@@ -65,17 +66,13 @@ A prioridade de ferramentas é **ArtCraft, Canva e CapCut**, com **HyperFrames**
 
 ---
 
-### Cortes PodIMEP para o ministério
+<a id="kit-edicao-de-cortes"></a>
 
-O [guia de edição de cortes](docs/cortes/guia-podimep.md) reúne as decisões do corte sobre o véu: narrativa, legenda palavra a palavra, títulos centrais com hierarquia, fundos sólidos, câmera/P&B sincronizados e áudio em faixas independentes. Inclui [39 pedidos e decisões](docs/cortes/pedidos-e-decisoes.md), parâmetros medidos, receitas e critérios de revisão. São referências adaptáveis à identidade vigente.
+## Kit de edição de cortes
 
-Para abrir um moodboard com seis exemplos animados e obter os fontes editáveis em uma pasta de trabalho fora do repositório:
+Use o [kit de edição de cortes](skills/bezalel-edicao-video/references/kit-edicao-de-cortes.md) como método padrão para cortes curtos de conteúdo falado, como entrevistas, aulas, podcasts e pregações. O kit usa exemplos sintéticos e pode ser aplicado no editor escolhido. Adapte o ritmo, a composição e os efeitos à fala, à identidade e ao briefing.
 
-```sh
-node scripts/cortes/materializar-kit.mjs --dest ../podimep-kit
-```
-
-Abra `../podimep-kit/referencias/index.html`. O comando não baixa mídia, não instala ferramentas e não exporta vídeo. Vídeo, música, SFX, fontes e LUT são dependências externas descritas no guia. O exemplo Remotion não substitui o editor escolhido para a produção.
+Consulte os guias de [sincronismo de legendas](skills/bezalel-legendas/references/sincronismo-de-legendas.md) e [motion para cortes](skills/bezalel-motion-design/references/motion-para-cortes.md) para detalhar o timing e as composições.
 
 ---
 
@@ -85,7 +82,7 @@ Abra `../podimep-kit/referencias/index.html`. O comando não baixa mídia, não 
 
 | Tecnologia ou formato | Uso no projeto |
 | --- | --- |
-| **Markdown + metadados YAML** | Cada `SKILL.md` contém `name`, `description` e o procedimento completo. |
+| **Markdown + metadados YAML** | Cada `SKILL.md` contém `name`, `description` e o procedimento principal. Guias opcionais ficam em `references/`. |
 | **Node.js 24.13.0+ / JavaScript ESM** | Instalador opcional com módulos nativos; versão mínima também declarada em `engines` do `package.json`. |
 | **JSON / JSONL** | Registros de produção e comandos estruturados quando o aplicativo oferecer esse suporte. |
 | **HTML / JavaScript** | Fonte de composições HyperFrames quando esse fluxo for escolhido. |
@@ -125,7 +122,7 @@ As skills e o instalador não baixam aplicativos, instalam plugins ou conectam c
 
 ## 🧩 Skills disponíveis
 
-O catálogo contém **27 skills**, organizadas por finalidade. Cada arquivo é independente; os procedimentos e as dependências completas estão nos links abaixo.
+O catálogo contém **27 skills**, organizadas por finalidade. Os links abaixo abrem os procedimentos principais de cada skill.
 
 ### 🧭 Planejamento, texto e revisão — 5 skills
 
@@ -207,14 +204,16 @@ O catálogo contém **27 skills**, organizadas por finalidade. Cada arquivo é i
     ├── 📁 bezalel-design-grafico/
     │   └── 📄 SKILL.md           → Metadados, procedimento e critérios de entrega
     ├── 📁 bezalel-edicao-video/
-    │   └── 📄 SKILL.md
+    │   ├── 📄 SKILL.md
+    │   └── 📁 references/
+    │       └── 📄 kit-edicao-de-cortes.md
     ├── 📁 bezalel-lightcraft-foto/
     │   └── 📄 SKILL.md
     └── 📁 bezalel-…/             → Demais skills listadas no catálogo
         └── 📄 SKILL.md
 ```
 
-Cada pasta distribuída contém somente seu `SKILL.md`. Materiais de marca, fotos, produções e dados da equipe ficam na pasta de trabalho privada, descrita em [Materiais e entregas](#entregas).
+Cada pasta distribuída contém seu `SKILL.md` e pode incluir guias Markdown em `references/`. Materiais de marca, fotos, produções e dados da equipe ficam na pasta de trabalho privada, descrita em [Materiais e entregas](#entregas).
 
 ---
 
@@ -238,7 +237,7 @@ Manual vigente, logos oficiais, textos/fatos aprovados e direitos sobre os mater
 
 ## ⬇️ Preparação e downloads
 
-1. Baixe e extraia este repositório, preservando `install.mjs` ao lado de `skills/`.
+1. Baixe e extraia este repositório. Para usar o instalador, mantenha `install.mjs`, `scripts/` e `skills/` na estrutura do pacote.
 2. Escolha a instalação manual ou o instalador opcional.
 3. Para usar o instalador, obtenha [Node.js](https://nodejs.org/en/download) em versão 24.13.0 ou superior e confira:
 
@@ -267,7 +266,7 @@ No Windows, `~` representa sua pasta de usuário, como `C:/Users/SEU_USUARIO`. A
 
 Copie a pasta de cada skill desejada para o destino escolhido. Para instalar todas, copie as **27 subpastas** de `skills/`, sem criar uma segunda pasta `skills` dentro do destino.
 
-Também é possível copiar o texto: crie a pasta correspondente e salve o arquivo como **`SKILL.md`**, mantendo o cabeçalho com `name` e `description`. Confira se a extensão não ficou `SKILL.md.txt`.
+Também é possível copiar o texto: crie a pasta correspondente e salve o arquivo como **`SKILL.md`**, mantendo o cabeçalho com `name` e `description`. Confira se a extensão não ficou `SKILL.md.txt`. Se a skill tiver `references/`, copie também essa pasta para o mesmo destino.
 
 ### ⌨️ 3. Opção com Node.js
 
@@ -286,7 +285,7 @@ node install.mjs --all --project "C:/projetos/Bezalel"
 
 O instalador escolhe o destino nesta ordem: `--dest` ou `--project`, quando informado; caso contrário, `CODEX_HOME/skills` se a variável `CODEX_HOME` estiver definida; na ausência dela, `~/.agents/skills`. Esse é o comportamento deste instalador, e os destinos explícitos ajudam a evitar dúvidas sobre onde a cópia será gravada.
 
-Arquivos idênticos são preservados. Conteúdo diferente, pastas personalizadas e caminhos com links simbólicos causam interrupção; o instalador não oferece `--force`.
+O instalador copia `SKILL.md` e as referências Markdown da skill. Arquivos idênticos são preservados. Conteúdo diferente, pastas personalizadas e caminhos com links simbólicos causam interrupção; o instalador não oferece `--force`.
 
 ### 🔎 4. Confira a descoberta
 
@@ -524,6 +523,7 @@ O comando usa `npm ci --ignore-scripts` para substituir `node_modules/` com as v
 | Recurso | Por que existe |
 | --- | --- |
 | `scripts/check-skills.mjs` | O lint genérico não confere nome da pasta, frontmatter, catálogo e links do pacote. |
+| `scripts/skill-layout.mjs` | Compartilha as regras de organização das referências Markdown entre instalador e validadores. |
 | `scripts/check-security.mjs` | Um único comando para arquivos atuais, índice, histórico e mensagem de commit, com diagnósticos sem valores sensíveis. |
 | `scripts/repository.mjs` | Centraliza leitura de arquivos/blobs Git, encoding, tamanho e identificação de links. |
 | `scripts/security-policy.mjs` | Mantém caminhos permitidos e padrões de privacidade separados da execução. |
@@ -571,7 +571,7 @@ Hooks podem ser desativados pelo ambiente ou por opções do Git. Exigir PR e o 
 | **`.gitignore` e política de caminhos** | Evitar versionamento de ambientes, credenciais, materiais privados e formatos fora do escopo; a política também verifica adições forçadas. |
 | **Secretlint** | Procurar credenciais em texto, incluindo Markdown e testes, sem exceção geral para documentação. |
 | **Gitleaks na CI** | Executar `gacts/gitleaks@v1`, conforme o template Avodah, com regras padrão e valores redigidos. |
-| **Checks de privacidade** | Sinalizar e-mails não reservados, CPF válido, alguns telefones brasileiros, caminhos pessoais e algumas credenciais. |
+| **Checks de privacidade** | Sinalizar padrões como e-mails não reservados, CPF válido, alguns telefones brasileiros, caminhos pessoais, credenciais e URLs de acesso a recursos internos. |
 | **Hooks locais** | Conferir índice, mensagem do commit e histórico antes do envio, quando ativos. |
 | **CI e revisão humana** | Repetir verificações no GitHub e avaliar mudanças que os padrões automáticos não reconhecem. |
 
@@ -642,7 +642,7 @@ A validação local de YAML, scripts e testes não comprova a execução dos job
 1. Edite o **`SKILL.md` na fonte**, preservando `name`, `description` e os limites da atividade.
 2. Atualize o catálogo deste README quando mudar escopo, dependência, formato de entrega ou quantidade de skills.
 3. Para adicionar uma skill, crie sua pasta em `skills/` com `SKILL.md` válido e `name` igual ao nome da pasta; o instalador descobre as pastas sem uma lista fixa no código.
-4. Execute `npm run check` e confira o diff, metadados, links e referências. Ao alterar ferramentas, revise também dependências e lockfile.
+4. Para guias de apoio, use `references/<nome-em-minusculas>.md` na pasta da skill e vincule cada guia no `SKILL.md`. Execute `npm run check` e confira o diff, metadados e links. Ao alterar ferramentas, revise também dependências e lockfile.
 5. Compare as cópias instaladas antes de atualizar. O instalador interrompe diante de conteúdo diferente ou personalizado; mescle as alterações antes de substituir manualmente.
 
 Cópias já instaladas e arquivos anexados a projetos do ChatGPT **não se atualizam automaticamente quando a fonte muda**. Mantenha as referências de cada integrante vigentes e preserve personalizações.
@@ -671,7 +671,7 @@ O instalador deste repositório copia skills locais para o Codex. No ChatGPT mó
 
 1. Crie ou abra o projeto **Bezalel — Comunicação IMEP** na conta usada pelo ministério. Se necessário, configure pelo navegador e continue no aplicativo.
 2. Adicione manual vigente, logos e referências autorizadas, identificando versões superadas.
-3. Adicione os `SKILL.md` relevantes ao departamento quando a interface aceitar arquivos; alternativamente, forneça o conteúdo como referência textual.
+3. Adicione os `SKILL.md` relevantes ao departamento e os guias de `references/` úteis à demanda. Se for preciso, forneça o conteúdo como referência textual.
 4. Ajuste a base de instruções abaixo e inicie a demanda dentro do projeto, indicando o procedimento e os materiais.
 5. Execute no editor disponível e forneça uma prova acessível para revisão. Preserve o editável; confira o export quando solicitado.
 
