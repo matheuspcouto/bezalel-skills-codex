@@ -1,6 +1,6 @@
 # 🎨 Bezalel Skills Codex
 
-O **bezalel-skills-codex** reúne **29 skills** para o Ministério Bezalel da Igreja Metodista em Palmas. O catálogo atende Videomaker, Design, Fotografia, Story, Social Media e Podimep.
+O **bezalel-skills-codex** reúne **30 skills** para o Ministério Bezalel da Igreja Metodista em Palmas. O catálogo atende Videomaker, Design, Fotografia, Story, Social Media e Podimep.
 
 - **Codex** · [Instale as skills](#instalacao) e use o procedimento adequado à sua demanda.
 - **ChatGPT** · [Configure o projeto Bezalel](docs/chatgpt/CONFIG-GPT.md) com as instruções e fontes do ministério.
@@ -61,9 +61,9 @@ O usuário prepara o editor e autoriza as próprias conexões. Confira na skill 
 
 ## 🧩 Skills disponíveis
 
-O catálogo contém **29 skills**, organizadas por finalidade. Cada arquivo é independente; os procedimentos e as dependências completas estão nos links abaixo.
+O catálogo contém **30 skills**, organizadas por finalidade. Cada arquivo é independente; os procedimentos e as dependências completas estão nos links abaixo.
 
-### 🧭 Planejamento, texto e revisão — 7 skills
+### 🧭 Planejamento, texto e revisão — 8 skills
 
 | Skill | O que faz |
 | --- | --- |
@@ -72,6 +72,7 @@ O catálogo contém **29 skills**, organizadas por finalidade. Cada arquivo é i
 | [bezalel-legendas](skills/bezalel-legendas/SKILL.md) | Produz copy, transcrição local e legendas editáveis/SRT/VTT; orienta remapeamento após cortes e revisão textual/bíblica. |
 | [bezalel-analise-live](skills/bezalel-analise-live/SKILL.md) | Analisa lives de culto sob demanda e entrega no chat anotações, título, frase marcante, marcadores do culto e sugestões de corte e áudio. |
 | [bezalel-estrategia-social](skills/bezalel-estrategia-social/SKILL.md) | Adequa títulos, palavras-chave, hashtags e CTA a Instagram, TikTok e YouTube; analisa desempenho sob demanda. |
+| [bezalel-metricas-redes-sociais](skills/bezalel-metricas-redes-sociais/SKILL.md) | Consulta Instagram, YouTube, Facebook e TikTok da IMEP; confere ganhos, perdas e saldo de seguidores/inscritos; cria dashboard web por período, Podimep e demais conteúdos, com resultados orgânicos/pagos e sugestões exclusivamente orgânicas. |
 | [bezalel-revisao-tecnica](skills/bezalel-revisao-tecnica/SKILL.md) | Confere conteúdo, formato, evidências e editabilidade; devolve achados e limitações sem alterar a produção por iniciativa própria. |
 | [bezalel-revisao-privacidade](skills/bezalel-revisao-privacidade/SKILL.md) | Revisa diffs, links, acessos, integrações e materiais antes de anexar, compartilhar ou versionar. |
 
@@ -248,7 +249,7 @@ Atualize os procedimentos na fonte e compare as cópias instaladas antes de subs
 
 ## 💬 Projeto Bezalel no ChatGPT
 
-O instalador copia as 29 skills para uso local no Codex. No ChatGPT, a configuração usa um projeto individual com instruções e fontes, disponível pelo navegador e pelos aplicativos compatíveis.
+O instalador copia as 30 skills para uso local no Codex. No ChatGPT, a configuração usa um projeto individual com instruções e fontes, disponível pelo navegador e pelos aplicativos compatíveis.
 
 1. Siga o [CONFIG-GPT.md](docs/chatgpt/CONFIG-GPT.md) para criar o projeto **Bezalel**.
 2. Cole [BEZALEL.md](docs/chatgpt/BEZALEL.md) em **Instruções do projeto**.
