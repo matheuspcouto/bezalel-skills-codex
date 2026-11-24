@@ -1,3 +1,7 @@
+// Executado por npm run lint:skills para conferir estrutura, metadados YAML,
+// catálogo do README e links locais. Os testes também importam os validadores
+// de metadados e catálogo para exercitar casos sintéticos.
+
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { dirname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';

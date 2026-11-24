@@ -1,5 +1,8 @@
 #!/usr/bin/env node
-// Local-only optional installer. No packages, downloads, global config or subprocesses.
+// Instalador local das skills e de suas referências Markdown.
+// Use node install.mjs --list para consultar o catálogo ou --help para ver
+// opções de seleção e destino. A cópia usa apenas os arquivos deste pacote
+// e preserva conteúdo existente quando houver conflito.
 import { copyFileSync, constants, existsSync, lstatSync, mkdirSync, readFileSync,
   readdirSync, rmdirSync, unlinkSync } from 'node:fs';
 import { dirname, isAbsolute, join, resolve } from 'node:path';

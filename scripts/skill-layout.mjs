@@ -1,3 +1,7 @@
+// Compartilha o formato de uma pasta de skill entre o instalador e os validadores.
+// skillFiles lista SKILL.md e referências Markdown regulares para copiar ou validar.
+// A política de segurança reutiliza o padrão de nomes das referências.
+
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 

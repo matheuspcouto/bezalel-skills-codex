@@ -1,3 +1,7 @@
+// Define os caminhos, tipos e tamanhos permitidos e os padrões de privacidade.
+// check-security.mjs aplica essas regras às entradas coletadas. Cada achado
+// contém apenas arquivo, linha e regra.
+
 import { maxFileBytes } from './repository.mjs';
 import { skillReferenceName } from './skill-layout.mjs';
 
