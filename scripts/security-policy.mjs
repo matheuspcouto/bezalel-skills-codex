@@ -1,4 +1,9 @@
+// Define os caminhos, tipos e tamanhos permitidos e os padrões de privacidade.
+// check-security.mjs aplica essas regras às entradas coletadas. Cada achado
+// contém apenas arquivo, linha e regra.
+
 import { maxFileBytes } from './repository.mjs';
+import { skillReferenceName } from './skill-layout.mjs';
 
 const rootFiles = new Set([
   'README.md', 'AGENTS.md',
@@ -19,6 +24,7 @@ export function permittedPath(name) {
   return rootFiles.has(name)
     || chatgptDocs.has(name)
     || /^skills\/bezalel-[a-z0-9-]+\/SKILL\.md$/.test(name)
+    || (/^skills\/bezalel-[a-z0-9-]+\/references\/[^/]+$/.test(name) && skillReferenceName.test(name.split('/').at(-1)))
     || /^(scripts|tests)\/[a-z0-9/-]+(?:\.test)?\.mjs$/.test(name)
     || /^docs\/[a-z0-9/-]+\.md$/.test(name)
     || /^\.husky\/(pre-commit|pre-push|commit-msg)$/.test(name)

@@ -45,6 +45,14 @@ seguir as regras de materiais e permissões integradas neste arquivo. Não inven
 - Após gerar/importar no editor, confira idioma explícito, fonte/estilo, acentos, área segura e uma amostra de uma e duas linhas. Compare todo o texto salvo à transcrição corrigida, permitindo diferenças de espaços/quebras; verifique tempos positivos, ordenação, sobreposição intencional e limites da sequência. Essa conferência detecta perdas de texto e intervalos inválidos; sincronismo integral continua dependendo de reprodução com áudio.
 - Na fala que cita a Bíblia, mantenha a distinção entre transcrição do participante e cartela com citação editorial. Consultar uma tradução ajuda a identificar referência/grafia, mas não autoriza substituir silenciosamente a fala nem declarar a tradução confirmada apenas por semelhança textual.
 
+## Legenda animada e lettering em cortes
+
+- Use blocos de sentido como base. Quando a direção pedir revelação por palavra, marque o ataque no áudio da sequência, mantenha a palavra oculta até o primeiro frame no ou após o ataque e preserve leitura após a entrada.
+- Quando um lettering ocupar a mesma região e repetir a fala, integre o destaque à legenda ou substitua só a camada visual naquele intervalo. Preserve a transcrição íntegra, inclusive no SRT/VTT quando solicitado. Nas emendas, confira a última palavra de um lado e a primeira do outro.
+- Em sobreposição de vozes, identifique quem fala se a imagem e o som deixarem dúvida. Preserve intervenções necessárias ao sentido e encaminhe os pontos indistintos para conferência no áudio.
+
+Consulte [sincronismo e hierarquia de legendas](references/sincronismo-de-legendas.md) para cálculo por frame, sobreposição de vozes e revisão de entradas.
+
 ## Testes
 Checar encoding, ordem/duração dos cues, ortografia e fonte dos fatos; reproduzir mídia para verificar sincronismo/leitura. Fixture sem áudio só prova sintaxe.
 Conferir os arquivos entregues e registrar somente testes realmente executados no aplicativo.

@@ -8,6 +8,7 @@ O **bezalel-skills-codex** reúne **29 skills** para o Ministério Bezalel da Ig
 ## 📑 Sumário
 
 - [✨ Principais recursos](#recursos)
+- [Kit de edição de cortes](#kit-edicao-de-cortes)
 - [🛠️ Tecnologias e formatos](#tecnologias)
 - [🧰 Ferramentas e integrações](#ferramentas)
 - [🧩 Skills disponíveis](#skills)
@@ -34,11 +35,19 @@ O **bezalel-skills-codex** reúne **29 skills** para o Ministério Bezalel da Ig
 
 As skills apoiam o trabalho do briefing à revisão. Você pode planejar uma pauta, criar uma peça, editar um vídeo, organizar um acervo ou conferir uma entrega. Cada skill descreve as entradas, o procedimento e o que precisa ser verificado.
 
+<a id="kit-edicao-de-cortes"></a>
+
+## Kit de edição de cortes
+
+Use o [kit de edição de cortes](skills/bezalel-edicao-video/references/kit-edicao-de-cortes.md) como método padrão para cortes curtos de conteúdo falado, como entrevistas, aulas, podcasts e pregações. O kit usa exemplos sintéticos e pode ser aplicado no editor escolhido. Adapte o ritmo, a composição e os efeitos à fala, à identidade e ao briefing.
+
+Consulte os guias de [sincronismo de legendas](skills/bezalel-legendas/references/sincronismo-de-legendas.md) e [motion para cortes](skills/bezalel-motion-design/references/motion-para-cortes.md) para detalhar o timing e as composições.
+
 <a id="tecnologias"></a>
 
 ## 🛠️ Tecnologias e formatos
 
-Cada skill é um arquivo `SKILL.md` com metadados YAML. O instalador opcional usa módulos nativos do Node.js. Os formatos de trabalho e de entrega estão nas skills de cada editor.
+Cada skill tem um `SKILL.md` com metadados YAML e pode incluir guias Markdown em `references/`. O instalador opcional usa módulos nativos do Node.js. Os formatos de trabalho e de entrega estão nas skills de cada editor.
 
 <a id="ferramentas"></a>
 
@@ -114,7 +123,7 @@ O catálogo contém **29 skills**, organizadas por finalidade. Cada arquivo é i
 
 | Caminho | Conteúdo |
 | --- | --- |
-| `skills/` | Uma pasta e um `SKILL.md` por procedimento. |
+| `skills/` | Uma pasta e um `SKILL.md` por procedimento, com `references/` quando houver guias de apoio. |
 | `docs/chatgpt/` | Configuração, instruções e fontes do projeto no ChatGPT. |
 | `docs/manutencao.md` | Contribuição, privacidade, validações e CI. |
 | `install.mjs` | Instalador local opcional. |
@@ -132,7 +141,7 @@ O catálogo contém **29 skills**, organizadas por finalidade. Cada arquivo é i
 
 ## ⬇️ Preparação e downloads
 
-Baixe ou clone o repositório com `install.mjs` ao lado de `skills/`. Para o instalador opcional, [obtenha o Node.js](https://nodejs.org/en/download) e confira a versão com `node --version`.
+Baixe ou clone o repositório. O instalador usa `install.mjs`, `scripts/` e `skills/` na estrutura do pacote. Para executá-lo, [obtenha o Node.js](https://nodejs.org/en/download) e confira a versão com `node --version`.
 
 <a id="instalacao"></a>
 
@@ -147,7 +156,7 @@ Baixe ou clone o repositório com `install.mjs` ao lado de `skills/`. Para o ins
 
 ### 📁 2. Opção manual
 
-Copie cada pasta `bezalel-<nome>` escolhida para o destino, preservando o arquivo `SKILL.md` e seus metadados.
+Copie cada pasta `bezalel-<nome>` escolhida para o destino, preservando o `SKILL.md` e a pasta `references/` quando existir.
 
 ### ⌨️ 3. Opção com Node.js
 
@@ -158,7 +167,7 @@ node install.mjs --skill bezalel-design-grafico
 node install.mjs --all --project "C:/projetos/Bezalel"
 ```
 
-Sem destino explícito, o instalador usa `CODEX_HOME/skills` se a variável estiver definida, ou `~/.agents/skills`. Os argumentos `--project` e `--dest` recebem caminhos absolutos. O instalador preserva cópias idênticas e interrompe ao encontrar conflitos ou pastas personalizadas.
+Sem destino explícito, o instalador usa `CODEX_HOME/skills` se a variável estiver definida, ou `~/.agents/skills`. Os argumentos `--project` e `--dest` recebem caminhos absolutos. O instalador copia o `SKILL.md` e suas referências Markdown, preserva cópias idênticas e interrompe ao encontrar conflitos ou pastas personalizadas.
 
 ### 🔎 4. Confira a descoberta
 

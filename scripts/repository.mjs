@@ -1,3 +1,8 @@
+// Camada de leitura do repositório para os validadores e seus testes.
+// Fornece a raiz do pacote e normaliza arquivos do diretório de trabalho, do
+// índice Git e do histórico local para a inspeção de segurança. As consultas
+// Git são somente leitura e usam os objetos e as referências disponíveis no clone.
+
 import { execFileSync } from 'node:child_process';
 import { existsSync, lstatSync, readFileSync, readdirSync, realpathSync } from 'node:fs';
 import { join, relative } from 'node:path';

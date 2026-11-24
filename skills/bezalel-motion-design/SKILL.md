@@ -7,6 +7,12 @@ description: "Projetar animação Bezalel com storyboard, timing e keyframes edi
 
 EffectCraft instalado primeiro; HyperFrames como prévia de conceito; After Effects apenas quando solicitado/justificado.
 
+## Motion para cortes de vídeo
+
+Use as [composições e receitas para cortes](references/motion-para-cortes.md) quando a edição precisar de lettering, cartelas ou ênfase audiovisual. Use a legenda como camada de leitura, diferencie apoio e destaque pela hierarquia tipográfica e marque cada entrada na timeline da fala. Preserve âncoras e áreas seguras dentro de cada composição.
+
+Quando duas cartelas formarem uma passagem contínua, mantenha cobertura de fundo em todos os frames. Se a ênfase pedir corte seco, amarre câmera, zoom e tratamento aos mesmos limites. Em uma edição de vídeo, confira o resultado no editor e só gere render, proxy ou intercâmbio mediante pedido explícito da saída.
+
 ## Procedimento
 
 1. Confirmar duração, aspecto, fps, mensagens, áudio, fontes, acessibilidade e aplicativo editável final. Identificar o que precisa permanecer texto, objeto ou keyframe.
@@ -14,12 +20,12 @@ EffectCraft instalado primeiro; HyperFrames como prévia de conceito; After Effe
 3. Quando o usuário quiser validar a ideia primeiro, usar previa-conceito e opcionalmente hyperframes-motion. A prévia não é o nativo final nem garante conversão automática.
 4. Após escolha humana do conceito complexo, usar effectcraft-motion para construção em camadas. Confirmar API/CLI e propriedades da versão; não transpor comandos Adobe por semelhança.
 5. Preservar duração, âncoras, texto, dependências e keyframes. Não aplicar bounce/transição universal nem efeitos que prejudiquem leitura; evitar flashes desconfortáveis.
-6. Salvar/reabrir projeto, editar texto ou keyframe, renderizar e conferir frames, clipping, fontes, movimento e som. Registrar explicitamente se a prova foi CLI ou GUI.
+6. Salvar e reabrir o projeto, editar um texto ou keyframe e conferir frames, clipping, fontes, movimento e som na prévia. Renderizar quando fizer parte da saída autorizada. Registrar explicitamente se a prova foi CLI ou GUI.
 7. Se uma ponte for solicitada, mapear o que ficou editável, foi rasterizado ou se perdeu. Nenhum MP4/HTML renomeado vira ECPROJ/AEP.
 
 ## Saída verificável
 
-Storyboard, fonte da prévia se usada, projeto real do aplicativo final, render e matriz de preservação quando houver ponte.
+Storyboard, fonte da prévia se usada, projeto real do aplicativo final, render quando autorizado e matriz de preservação quando houver ponte.
 
 Critérios profissionais: motion (referência integrada neste arquivo).
 

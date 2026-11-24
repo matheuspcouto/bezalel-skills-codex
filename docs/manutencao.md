@@ -99,6 +99,7 @@ O check **Repository Check** consolida os cinco resultados e falha se algum job 
 ## 🔄 Atualização do pacote
 
 - Para adicionar uma skill, crie `skills/bezalel-<nome>/SKILL.md` com `name` igual ao nome da pasta. Atualize o catálogo e a contagem no README.
+- Para guias de apoio, use `references/<nome-em-minusculas>.md` diretamente na pasta da skill e vincule cada guia no `SKILL.md`. O instalador e os validadores incluem esses arquivos.
 - Antes de atualizar uma cópia instalada, compare os arquivos. Resolva manualmente diferenças e personalizações antes de substituir a cópia.
 - Ao atualizar dependências, revise scripts e lockfile. As versões fixadas abaixo tratam avisos de dependências transitivas. Revalide lint, testes e auditoria ao alterar os overrides.
 

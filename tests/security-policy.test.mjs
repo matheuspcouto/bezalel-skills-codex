@@ -5,6 +5,19 @@ import { textEntry } from '../scripts/repository.mjs';
 
 const entry = text => textEntry('README.md', Buffer.from(text));
 
+test('referências de skills aceitam apenas Markdown com nomes simples e recebem a inspeção de privacidade', () => {
+  const folder = 'skills/bezalel-exemplo/references';
+  const guide = `${folder}/guia-de-edicao.md`;
+  assert.equal(permittedPath(guide), true);
+  for (const name of ['guia.mjs', 'Guia.md', 'outro/guia.md', 'guia.local.md']) {
+    assert.equal(permittedPath(`${folder}/${name}`), false);
+  }
+  const privateLink = ['https://drive.google.com', '/file/d/recurso-sintetico/view'].join('');
+  assert.deepEqual(inspectEntries([textEntry(guide, Buffer.from(privateLink))]), [
+    { file: guide, line: 1, rule: 'url-de-recurso-interno-ou-acesso' }
+  ]);
+});
+
 test('permite apenas os três novos nomes em maiúsculas nos caminhos previstos', () => {
   for (const name of ['CONFIG-GPT.md', 'BEZALEL.md', 'FONTES.md']) {
     assert.equal(permittedPath(`docs/chatgpt/${name}`), true);

@@ -1,15 +1,19 @@
 #!/usr/bin/env node
-// Local-only optional installer. No packages, downloads, global config or subprocesses.
+// Instalador local das skills e de suas referências Markdown.
+// Use node install.mjs --list para consultar o catálogo ou --help para ver
+// opções de seleção e destino. A cópia usa apenas os arquivos deste pacote
+// e preserva conteúdo existente quando houver conflito.
 import { copyFileSync, constants, existsSync, lstatSync, mkdirSync, readFileSync,
   readdirSync, rmdirSync, unlinkSync } from 'node:fs';
 import { dirname, isAbsolute, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { homedir } from 'node:os';
+import { skillFiles } from './scripts/skill-layout.mjs';
 
 const source = join(dirname(fileURLToPath(import.meta.url)), 'skills');
 function noLinks(path) {
   for (let current = resolve(path);; current = dirname(current)) {
-    if (existsSync(current) && lstatSync(current).isSymbolicLink()) throw Error(`Link preservado: ${current}`);
+    if (lstatSync(current, { throwIfNoEntry: false })?.isSymbolicLink()) throw Error(`Link preservado: ${current}`);
     if (dirname(current) === current) break;
   }
 }
@@ -45,14 +49,30 @@ function main() {
   dest = resolve(dest); noLinks(dest);
   const plan = names.map(name => {
     if (!available.includes(name)) throw Error(`Skill inexistente: ${name}`);
-    const input = join(source, name, 'SKILL.md'); noLinks(input);
-    const bytes = readFileSync(input);
-    const metadata = bytes.toString('utf8').match(/^---\r?\nname: ([a-z0-9-]+)\r?\ndescription: (.+)\r?\n---/);
+    const origin = join(source, name); noLinks(origin);
+    const files = skillFiles(origin);
+    if (!files.includes('SKILL.md')) throw Error(`SKILL.md ausente: ${name}`);
+    const metadata = readFileSync(join(origin, 'SKILL.md'), 'utf8')
+      .match(/^---\r?\nname: ([a-z0-9-]+)\r?\ndescription: (.+)\r?\n---/);
     if (!metadata || metadata[1] !== name) throw Error(`Metadata invalida: ${name}`);
-    const folder = join(dest, name), output = join(folder, 'SKILL.md'); noLinks(output);
-    if (existsSync(folder) && readdirSync(folder).some(file => file !== 'SKILL.md')) throw Error(`Pasta personalizada preservada: ${folder}`);
-    if (existsSync(output) && !readFileSync(output).equals(bytes)) throw Error(`Conflito preservado: ${output}`);
-    return { bytes, input, folder, output, skip: existsSync(output) };
+    const folder = join(dest, name); noLinks(folder);
+    if (existsSync(folder)) {
+      let existing;
+      try { existing = skillFiles(folder); }
+      catch { throw Error(`Pasta personalizada preservada: ${folder}`); }
+      if (existing.some(file => !files.includes(file))) throw Error(`Pasta personalizada preservada: ${folder}`);
+      if (!files.some(file => file.startsWith('references/')) && existsSync(join(folder, 'references'))) {
+        throw Error(`Pasta personalizada preservada: ${folder}`);
+      }
+    }
+    return files.map(file => {
+      const input = join(origin, file), output = join(folder, file);
+      noLinks(input); noLinks(output);
+      const bytes = readFileSync(input);
+      const skip = existsSync(output);
+      if (skip && !readFileSync(output).equals(bytes)) throw Error(`Conflito preservado: ${output}`);
+      return { bytes, input, output, skip };
+    });
   });
   const createdDirs = [], createdFiles = [];
   function ensureDir(path) {
@@ -60,9 +80,9 @@ function main() {
     ensureDir(dirname(path)); noLinks(path); mkdirSync(path); createdDirs.push(path);
   }
   try {
-    for (const item of plan) {
+    for (const item of plan.flat()) {
       if (item.skip) continue;
-      noLinks(item.output); ensureDir(item.folder);
+      noLinks(item.input); noLinks(item.output); ensureDir(dirname(item.output));
       copyFileSync(item.input, item.output, constants.COPYFILE_EXCL);
       createdFiles.push(item);
     }
@@ -73,6 +93,7 @@ function main() {
     for (const path of createdDirs.reverse()) { try { rmdirSync(path); } catch { /* only empty newly created directories */ } }
     throw error;
   }
-  console.log(`Skills copiadas: ${plan.filter(i => !i.skip).length}; identicas preservadas: ${plan.filter(i => i.skip).length}.\nDestino: ${dest}\nReinicie o Codex se nao aparecerem. Nenhum aplicativo, conector ou configuracao global foi instalado.`);
+  const preserved = plan.filter(files => files.every(file => file.skip)).length;
+  console.log(`Skills copiadas: ${plan.length - preserved}; identicas preservadas: ${preserved}.\nDestino: ${dest}\nReinicie o Codex se nao aparecerem. Nenhum aplicativo, conector ou configuracao global foi instalado.`);
 }
 try { main(); } catch (error) { console.error(error.message); process.exitCode = 1; }
