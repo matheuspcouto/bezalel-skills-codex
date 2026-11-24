@@ -43,7 +43,9 @@ Para organizar pastas ou comparar cópias do acervo antes da montagem, use `beza
 
 ## Cortes verticais com referência editorial
 
-Aplique este estilo como padrão quando o usuário pedir edição de um corte curto do Bezalel, incluindo trechos de pregação e podcast para redes sociais. Use a linguagem visual do Reel de Victor Resende como referência de ritmo e hierarquia. Outra direção solicitada pelo usuário prevalece. Em episódios completos, registros integrais de eventos e peças longas, aplique a edição proporcional ao formato e use este estilo nos cortes derivados.
+Aplique o [kit de edição de cortes](references/kit-edicao-de-cortes.md) como método padrão para cortes curtos, incluindo pregação, podcast e outros conteúdos falados. Monte pela ideia, preserve a premissa e a ordem da fala, confira a montagem sem grafismos e só então escolha a ênfase visual. Se o título editorial resumir a ideia, diferencie-o da legenda literal. Em peças longas, aplique o método proporcionalmente e use o kit nos cortes derivados.
+
+Use as referências visuais como repertório de ritmo e hierarquia. Se a peça comportar lettering, use apoio menor e uma palavra dominante, com posição previsível e contraste adequado. Mantenha o fundo contínuo entre cartelas encadeadas. Em um corte seco de ênfase, sincronize as mudanças combinadas de câmera, zoom e tratamento no mesmo intervalo da timeline. A identidade, o formato e a direção do briefing orientam as escolhas.
 
 Para cada corte, escolha a fala que abre a peça, as palavras que merecem destaque e os momentos de mudança visual. Trabalhe com o pregador ou falante em evidência, saturação controlada, legendas cinéticas de alto contraste e palavras-chave maiores ou com tipografia distinta. Use monocromia, desfoque, moldura ou CTA quando tiverem função no trecho e couberem no briefing. Adapte a paleta e a tipografia à identidade do Bezalel.
 
@@ -107,6 +109,8 @@ Análise visual por amostragem no player público. Timecodes aproximados; não h
 Referências para consulta no momento da edição. [Tamanho e proporções de Reels](https://help.instagram.com/1038071743007909) · [Áreas seguras em anúncios para Stories e Reels](https://www.facebook.com/business/help/980593475366490)
 
 ## Áudio e música
+
+Mantenha voz, trilha e efeitos em faixas independentes. Ajuste a entrada na timeline, o ponto inicial da faixa, a duração e o ganho da música separadamente. Se um efeito pontuar um destaque, alinhe o ataque à fala ou à ação e escute a cauda e as emendas com a voz.
 
 1. Sincronize as fontes e escolha a voz principal mais limpa. Ajuste ganho por clipe e equilibre os participantes. Corrija ruído, reverberação, plosivas e sibilância com moderação e compare antes/depois. Use equalização corretiva, compressão leve e limitação quando necessárias. Preserve a dinâmica natural e use ambiente ou crossfades para evitar saltos entre cortes.
 2. Use música de fundo discreta quando combinar com a peça. Prefira instrumental, com fades e redução de volume sob a voz. Confira a inteligibilidade em fones e no alto-falante do celular. Se a faixa competir com a fala ou não houver permissão verificável, entregue a versão sem trilha.

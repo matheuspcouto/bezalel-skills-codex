@@ -7,6 +7,12 @@ description: "Projetar animação Bezalel com storyboard, timing e keyframes edi
 
 EffectCraft instalado primeiro; HyperFrames como prévia de conceito; After Effects apenas quando solicitado/justificado.
 
+## Motion para cortes de vídeo
+
+Use as [composições e receitas para cortes](references/motion-para-cortes.md) quando a edição precisar de lettering, cartelas ou ênfase audiovisual. Use a legenda como camada de leitura, diferencie apoio e destaque pela hierarquia tipográfica e marque cada entrada na timeline da fala. Preserve âncoras e áreas seguras dentro de cada composição.
+
+Quando duas cartelas formarem uma passagem contínua, mantenha cobertura de fundo em todos os frames. Se a ênfase pedir corte seco, amarre câmera, zoom e tratamento aos mesmos limites. Em uma edição de vídeo, confira o resultado no editor e só gere render, proxy ou intercâmbio mediante pedido explícito da saída.
+
 ## Procedimento
 
 1. Confirmar duração, aspecto, fps, mensagens, áudio, fontes, acessibilidade e aplicativo editável final. Identificar o que precisa permanecer texto, objeto ou keyframe.
@@ -14,12 +20,12 @@ EffectCraft instalado primeiro; HyperFrames como prévia de conceito; After Effe
 3. Quando o usuário quiser validar a ideia primeiro, usar previa-conceito e opcionalmente hyperframes-motion. A prévia não é o nativo final nem garante conversão automática.
 4. Após escolha humana do conceito complexo, usar effectcraft-motion para construção em camadas. Confirmar API/CLI e propriedades da versão; não transpor comandos Adobe por semelhança.
 5. Preservar duração, âncoras, texto, dependências e keyframes. Não aplicar bounce/transição universal nem efeitos que prejudiquem leitura; evitar flashes desconfortáveis.
-6. Salvar/reabrir projeto, editar texto ou keyframe, renderizar e conferir frames, clipping, fontes, movimento e som. Registrar explicitamente se a prova foi CLI ou GUI.
+6. Salvar e reabrir o projeto, editar um texto ou keyframe e conferir frames, clipping, fontes, movimento e som na prévia. Renderizar quando fizer parte da saída autorizada. Registrar explicitamente se a prova foi CLI ou GUI.
 7. Se uma ponte for solicitada, mapear o que ficou editável, foi rasterizado ou se perdeu. Nenhum MP4/HTML renomeado vira ECPROJ/AEP.
 
 ## Saída verificável
 
-Storyboard, fonte da prévia se usada, projeto real do aplicativo final, render e matriz de preservação quando houver ponte.
+Storyboard, fonte da prévia se usada, projeto real do aplicativo final, render quando autorizado e matriz de preservação quando houver ponte.
 
 Critérios profissionais: motion (referência integrada neste arquivo).
 
@@ -119,7 +125,7 @@ Priorizar aplicativos ArtCraft instalados (EffectCraft para motion, FilmCraft pa
 
 Antes de executar, identificar objetivo, público/canal, fatos/texto aprovados, materiais e direitos, formatos, prazo, destino e necessidade de edição. Resolver somente as lacunas que impedem a etapa atual. Para trabalhos complexos, propor conceito/storyboard/prévia e confirmar escolha humana antes do acabamento; tarefa simples não exige rito ou relatório completo. HyperFrames pode validar ideia/ritmo antes do projeto nativo, sem conversão automática em ArtCraft, Adobe ou CapCut.
 
-Materiais privados ficam em Assets/ da pasta de trabalho escolhida pelo usuário; exports e fontes em Produções/<ID>/. Essas pastas não são relativas à pasta de instalação da skill. Criar exports/, editaveis/, assets/, previa/ e revisao/ somente quando necessários. Consultar manual e logos oficiais da equipe atual; não impor identidade IMEP a outras equipes. Na instalação original IMEP, regras extraídas em Assets/imep/referencias-agentes/ aguardam revisão humana e o PDF oficial prevalece.
+Materiais privados ficam em Assets/ da pasta de trabalho escolhida pelo usuário; exports e fontes em Produções/<ID>/. Essas pastas não são relativas à pasta de instalação da skill. Criar exports/, editaveis/, assets/, previa/ e revisao/ somente quando necessários. Consultar manual e logos oficiais da equipe atual; não impor identidade IMEP a outras equipes. Na IMEP, consulte o manual vigente pelo link público fornecido pelo usuário. Se o link faltar ou não puder ser lido, solicite o PDF ou outra referência oficial em formato textual ou visual que consiga interpretar. Resumos em Assets/imep/referencias-agentes/ aguardam revisão humana.
 
 Entregar export correto ao canal e fonte realmente editável, com dependências preservadas. Para afirmar native_validated: criar/salvar, reabrir, editar um elemento e testar export no aplicativo correspondente, além de inspecionar a saída. Registrar versão efetiva e testes CLI/GUI separadamente. Ajuda, extensão, mock e teste estático não validam nativo. PNG/JPG/PDF achatado/MP4 são exports, não projeto-fonte. SVG, roteiro, JSX ou HTML/JS podem ser editable_intermediate, com limitações explícitas. Sem teste no host, declarar nao_validado; sem dependência necessária, bloquear só a etapa afetada.
 

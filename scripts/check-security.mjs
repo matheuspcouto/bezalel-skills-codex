@@ -1,3 +1,7 @@
+// Executa a política de arquivos e o Secretlint nos arquivos atuais, no índice
+// ou no histórico Git. Use npm run com lint:security, lint:staged ou lint:history
+// respectivamente. O hook commit-msg usa --message com o arquivo da mensagem.
+
 import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';

@@ -45,6 +45,14 @@ seguir as regras de materiais e permissões integradas neste arquivo. Não inven
 - Após gerar/importar no editor, confira idioma explícito, fonte/estilo, acentos, área segura e uma amostra de uma e duas linhas. Compare todo o texto salvo à transcrição corrigida, permitindo diferenças de espaços/quebras; verifique tempos positivos, ordenação, sobreposição intencional e limites da sequência. Essa conferência detecta perdas de texto e intervalos inválidos; sincronismo integral continua dependendo de reprodução com áudio.
 - Na fala que cita a Bíblia, mantenha a distinção entre transcrição do participante e cartela com citação editorial. Consultar uma tradução ajuda a identificar referência/grafia, mas não autoriza substituir silenciosamente a fala nem declarar a tradução confirmada apenas por semelhança textual.
 
+## Legenda animada e lettering em cortes
+
+- Use blocos de sentido como base. Quando a direção pedir revelação por palavra, marque o ataque no áudio da sequência, mantenha a palavra oculta até o primeiro frame no ou após o ataque e preserve leitura após a entrada.
+- Quando um lettering ocupar a mesma região e repetir a fala, integre o destaque à legenda ou substitua só a camada visual naquele intervalo. Preserve a transcrição íntegra, inclusive no SRT/VTT quando solicitado. Nas emendas, confira a última palavra de um lado e a primeira do outro.
+- Em sobreposição de vozes, identifique quem fala se a imagem e o som deixarem dúvida. Preserve intervenções necessárias ao sentido e encaminhe os pontos indistintos para conferência no áudio.
+
+Consulte [sincronismo e hierarquia de legendas](references/sincronismo-de-legendas.md) para cálculo por frame, sobreposição de vozes e revisão de entradas.
+
 ## Testes
 Checar encoding, ordem/duração dos cues, ortografia e fonte dos fatos; reproduzir mídia para verificar sincronismo/leitura. Fixture sem áudio só prova sintaxe.
 Conferir os arquivos entregues e registrar somente testes realmente executados no aplicativo.
@@ -154,7 +162,7 @@ Priorizar aplicativos ArtCraft instalados (EffectCraft para motion, FilmCraft pa
 
 Antes de executar, identificar objetivo, público/canal, fatos/texto aprovados, materiais e direitos, formatos, prazo, destino e necessidade de edição. Resolver somente as lacunas que impedem a etapa atual. Para trabalhos complexos, propor conceito/storyboard/prévia e confirmar escolha humana antes do acabamento; tarefa simples não exige rito ou relatório completo. HyperFrames pode validar ideia/ritmo antes do projeto nativo, sem conversão automática em ArtCraft, Adobe ou CapCut.
 
-Materiais privados ficam em Assets/ da pasta de trabalho escolhida pelo usuário; exports e fontes em Produções/<ID>/. Essas pastas não são relativas à pasta de instalação da skill. Criar exports/, editaveis/, assets/, previa/ e revisao/ somente quando necessários. Consultar manual e logos oficiais da equipe atual; não impor identidade IMEP a outras equipes. Na instalação original IMEP, regras extraídas em Assets/imep/referencias-agentes/ aguardam revisão humana e o PDF oficial prevalece.
+Materiais privados ficam em Assets/ da pasta de trabalho escolhida pelo usuário; exports e fontes em Produções/<ID>/. Essas pastas não são relativas à pasta de instalação da skill. Criar exports/, editaveis/, assets/, previa/ e revisao/ somente quando necessários. Consultar manual e logos oficiais da equipe atual; não impor identidade IMEP a outras equipes. Na IMEP, consulte o manual vigente pelo link público fornecido pelo usuário. Se o link faltar ou não puder ser lido, solicite o PDF ou outra referência oficial em formato textual ou visual que consiga interpretar. Resumos em Assets/imep/referencias-agentes/ aguardam revisão humana.
 
 Entregar a fonte realmente editável, com dependências preservadas, e os exports solicitados. Não exportar vídeo, render de teste, proxy ou intercâmbio sem pedido explícito. Para afirmar native_validated: criar/salvar, reabrir, editar um elemento e, quando autorizado, testar export no aplicativo correspondente e inspecionar a saída. Sem export pedido, revisar no editor e registrar projeto_editavel_verificado quando houver evidência, com exportacao_nao_solicitada; não exportar apenas para obter native_validated. Registrar versão efetiva e testes CLI/GUI separadamente. Ajuda, extensão, mock e teste estático não validam nativo. PNG/JPG/PDF achatado/MP4 são exports, não projeto-fonte. SVG, roteiro, JSX ou HTML/JS podem ser editable_intermediate, com limitações explícitas. Sem teste no host, declarar nao_validado; sem dependência necessária, bloquear só a etapa afetada.
 

@@ -1,4 +1,9 @@
+// Define os caminhos, tipos e tamanhos permitidos e os padrões de privacidade.
+// check-security.mjs aplica essas regras às entradas coletadas. Cada achado
+// contém apenas arquivo, linha e regra.
+
 import { maxFileBytes } from './repository.mjs';
+import { skillReferenceName } from './skill-layout.mjs';
 
 const rootFiles = new Set([
   'README.md', 'AGENTS.md',
@@ -7,15 +12,45 @@ const rootFiles = new Set([
   '.gitleaks.toml'
 ]);
 
+const chatgptDocs = new Set([
+  'docs/chatgpt/CONFIG-GPT.md',
+  'docs/chatgpt/BEZALEL.md',
+  'docs/chatgpt/FONTES.md'
+]);
+
 export function permittedPath(name) {
   if (!/^[A-Za-z0-9._/-]+$/.test(name) || name.split('/').some(p => p === '..' || p === '.')) return false;
+  if (/(?:^|\/)(?:private|privado|\.private|\.local)(?:\/|$)/i.test(name)) return false;
   return rootFiles.has(name)
+    || chatgptDocs.has(name)
     || /^skills\/bezalel-[a-z0-9-]+\/SKILL\.md$/.test(name)
+    || (/^skills\/bezalel-[a-z0-9-]+\/references\/[^/]+$/.test(name) && skillReferenceName.test(name.split('/').at(-1)))
     || /^(scripts|tests)\/[a-z0-9/-]+(?:\.test)?\.mjs$/.test(name)
     || /^docs\/[a-z0-9/-]+\.md$/.test(name)
     || /^\.husky\/(pre-commit|pre-push|commit-msg)$/.test(name)
     || /^\.github\/workflows\/[a-z0-9-]+\.yml$/.test(name)
     || ['.github/dependabot.yml', '.github/PULL_REQUEST_TEMPLATE.md'].includes(name);
+}
+
+function hasPrivateReference(line) {
+  for (const [candidate] of line.matchAll(/https?:\/\/[^\s<>"'`\\)]+/gi)) {
+    const url = URL.parse(candidate);
+    if (!url) continue;
+    const host = url.hostname.toLowerCase();
+    const path = url.pathname.toLowerCase();
+
+    if (url.username || url.password) return true;
+    if (host === 'drive.google.com' && /\/(?:file|folders|shared-with-me)\/|^\/(?:open|uc|folderview)$/.test(path)) return true;
+    if (host === 'docs.google.com' && /^\/(?:document|spreadsheets|presentation|forms|drawings)\//.test(path)) return true;
+    if (host === 'calendar.google.com' && (/\/(?:embed|event|ical)\b/.test(path) || url.searchParams.has('cid'))) return true;
+    if ((host === 'canva.com' || host.endsWith('.canva.com')) && /^\/(?:design|folder|brand)\//.test(path)) return true;
+    if (['canva.link', 'forms.gle', '1drv.ms', 'chat.whatsapp.com'].includes(host)) return true;
+    if (host === 'chatgpt.com' && /^\/(?:share\/|g\/g-)/.test(path)) return true;
+    if (host.endsWith('.sharepoint.com') || host === 'onedrive.live.com') return true;
+    if (host === 'hooks.slack.com' || ((host === 'discord.com' || host === 'discordapp.com') && path.startsWith('/api/webhooks/'))) return true;
+    if ([...url.searchParams.keys()].some(key => /^(?:access_token|refresh_token|api_key|client_secret|x-amz-signature|x-goog-signature)$/i.test(key))) return true;
+  }
+  return false;
 }
 
 function validCpf(value) {
@@ -48,6 +83,7 @@ export function inspectEntries(entries) {
       if (/(?:\+55[ .-]?(?:\(?\d{2}\)?)[ .-]?9?\d{4}[ .-]?\d{4}|\(\d{2}\)\s*9?\d{4}-\d{4})(?!\d)/.test(line)) hit('telefone-brasileiro');
       if (/(?:[A-Z]:[\\/]Users[\\/]|\/Users\/|\/home\/)(?!SEU_USUARIO\b|seu-usuario\b|USER\b|user\b|<)[^\s/\\`"'<>]+/i.test(line)) hit('caminho-pessoal');
       if (/(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?|redis):\/\/[^\s/:]+:[^\s@]+@/i.test(line)) hit('credencial-em-url');
+      if (hasPrivateReference(line)) hit('url-de-recurso-interno-ou-acesso');
       if (/\b(?:senha|password|passwd|api[_-]?key|client[_-]?secret|access[_-]?token|refresh[_-]?token)\b["']?\s*[:=]\s*["']?(?!<|\$|process\.|ctx\.|EXAMPLE|PLACEHOLDER|REDACTED|seu[_-]|sua[_-])[A-Za-z0-9_+/=-]{12,}/i.test(line)) hit('credencial-atribuida');
     });
   }
